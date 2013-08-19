@@ -11,6 +11,9 @@ PR_PWDLEN=""
 
 local promptsize=${#${(%):------()--}}
 local rubyprompt=`rvm_prompt_info`
+function virtualenv_info {
+        [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
 local rubypromptsize=${#${rubyprompt}}
 local pwdsize=${#${(%):-%~}}
 
@@ -115,9 +118,9 @@ setprompt () {
   # Finally, the prompt.
 
   PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-$PR_CYAN$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT$PR_GREY(\
+$PR_CYAN$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT$PR_BLUE(\
 %{$reset_color%}$PR_LIGHT_YELLOW%$PR_PWDLEN<...<%~%<<\
-$PR_GREY)`rvm_prompt_info`$PR_CYAN\
+$PR_BLUE)$(virtualenv_info)$PR_CYAN\
 $PR_SHIFT_IN$PR_HBAR$PR_HBAR${(e)PR_FILLBAR}$PR_HBAR$PR_SHIFT_OUT\
 $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_URCORNER$PR_SHIFT_OUT\
 
