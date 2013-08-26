@@ -10,17 +10,17 @@ PR_FILLBAR=""
 PR_PWDLEN=""
 
 local promptsize=${#${(%):------()--}}
-local rubyprompt=`rvm_prompt_info`
 function virtualenv_info {
-        [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+        [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`')'
 }
-local rubypromptsize=${#${rubyprompt}}
+local pyprompt=`virtualenv_info`
+local pypromptsize=${#${pyprompt}}
 local pwdsize=${#${(%):-%~}}
 
-if [[ "$promptsize + $rubypromptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+if [[ "$promptsize + $pypromptsize + $pwdsize" -gt $TERMWIDTH ]]; then
   ((PR_PWDLEN=$TERMWIDTH - $promptsize))
 else
-  PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $rubypromptsize + $pwdsize)))..${PR_HBAR}.)}"
+  PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pypromptsize + $pwdsize)))..${PR_HBAR}.)}"
 fi
 
 }
