@@ -119,7 +119,7 @@ setprompt () {
 
   PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
 $PR_CYAN$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT$PR_BLUE(\
-%{$reset_color%}$PR_LIGHT_YELLOW%$PR_PWDLEN<...<%n@%m:%~%<<\
+%{$reset_color%}$PR_LIGHT_YELLOW%$PR_PWDLEN<...<%(!.%F{red}.%F{cyan})%n@%m%F{yellow}:%~%<<\
 $PR_BLUE)$(virtualenv_info)$PR_CYAN\
 $PR_SHIFT_IN$PR_HBAR$PR_HBAR${(e)PR_FILLBAR}$PR_HBAR$PR_SHIFT_OUT\
 $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_URCORNER$PR_SHIFT_OUT\
